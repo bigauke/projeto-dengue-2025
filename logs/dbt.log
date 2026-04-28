@@ -3,3 +3,16 @@
 {"data":{},"info":{"category":"","code":"","extra":{},"invocation_id":"019dd26e-b3c1-7e10-8a10-6d70f2225b67","level":"debug","msg":"No active cloud project configured, skipping remote license","name":"Generic","pid":23292,"thread":"tokio-rt-worker","ts":"2026-04-28T04:52:43.608163Z"}}
 {"data":{"columns":[],"is_inline":true,"node_name":"license_info","output_format":"json","preview":"{\n  \"status\": \"not_found\",\n  \"licensing_enabled\": true\n}","unique_id":"license.info"},"info":{"category":"","code":"Q041","extra":{},"invocation_id":"019dd26e-b3c1-7e10-8a10-6d70f2225b67","level":"info","msg":"{\n  \"status\": \"not_found\",\n  \"licensing_enabled\": true\n}","name":"ShowNode","pid":23292,"thread":"tokio-rt-worker","ts":"2026-04-28T04:52:43.609368Z"}}
 {"data":{"completed_at":"2026-04-28T04:52:44.926621Z","elapsed":1.3335752487182617,"success":true},"info":{"category":"","code":"Q039","extra":{},"invocation_id":"019dd26e-b3c1-7e10-8a10-6d70f2225b67","level":"info","msg":"\n==================== Execution Summary =====================\nFinished 'license' successfully [1.3s]","name":"CommandCompleted","pid":23292,"thread":"tokio-rt-worker","ts":"2026-04-28T04:52:44.932838Z"}}
+[0m03:08:06.595491 [debug] [MainThread]: Got an exception trying to initialize tracking
+
+
+============================== 03:08:06.821362 | 2f98a59a-a5d9-4d9d-97ce-17e4d0417758 ==============================
+[0m03:08:06.821362 [info ] [MainThread]: Running with dbt=1.7.0
+[0m03:08:06.823653 [debug] [MainThread]: running dbt with arguments {'introspect': 'True', 'debug': 'False', 'log_path': 'logs', 'invocation_command': 'dbt run', 'log_cache_events': 'False', 'write_json': 'True', 'version_check': 'True', 'printer_width': '80', 'target_path': 'None', 'static_parser': 'True', 'warn_error': 'None', 'use_experimental_parser': 'False', 'use_colors': 'True', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'log_format': 'default', 'partial_parse': 'True', 'profiles_dir': 'C:\\Users\\auke3\\.dbt', 'send_anonymous_usage_stats': 'True', 'indirect_selection': 'eager', 'cache_selected_only': 'False', 'fail_fast': 'False', 'no_print': 'None'}
+[0m03:08:06.824735 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path D:\projeto-dengue\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m03:08:06.827681 [debug] [MainThread]: Command `dbt run` failed at 03:08:06.826682 after 0.34 seconds
+[0m03:08:06.828742 [debug] [MainThread]: Flushing usage events
