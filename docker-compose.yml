@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  postgres_dengue:
+    image: postgres:15
+    container_name: postgres_dengue
+    environment:
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=dengue_db
+    ports:
+      - "5432:5432"
+    volumes:
+      # Onde o banco salva os dados de verdade
+      - postgres_data:/var/lib/postgresql/data
+      # Onde ele lê o seu script inicial (se existir)
+      - ./scripts:/docker-entrypoint-initdb.d
+    networks:
+      - dengue_network
+
+  airflow_dengue:
+    build: . # Isso avisa o Docker para ler o nosso Dockerfile ali de cima
+    container_name: airflow_dengue
+    depends_on:
+      - postgres_dengue
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres_dengue/dengue_db
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      # Forçamos uma senha fixa para não termos mais que caçar a senha gerada
+      - _AIRFLOW_WWW_USER_USERNAME=admin
+      - _AIRFLOW_WWW_USER_PASSWORD=admin
+    volumes:
+      # Mapeamentos blindados
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
+      - ./dbt_dengue:/opt/airflow/dbt_dengue
+      - ./data:/opt/airflow/data
+    ports:
+      - "8080:8080"
+    command: standalone
+    networks:
+      - dengue_network
+
+  grafana_dengue:
+    image: grafana/grafana-oss:10.1.0
+    container_name: grafana_dengue
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres_dengue
+    networks:
+      - dengue_network
+
+networks:
+  dengue_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
