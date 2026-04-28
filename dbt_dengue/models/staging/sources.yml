@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: minsaude        # Apelido que vamos usar no dbt
+    database: dengue_db   # Nome do banco
+    schema: bronze        # Onde a tabela está agora
+    tables:
+      - name: dengue_raw  # A tabela que o PostgreSQL acabou de preencher

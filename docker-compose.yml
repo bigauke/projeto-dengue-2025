@@ -15,6 +15,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
       # Onde ele lê o seu script inicial (se existir)
       - ./scripts:/docker-entrypoint-initdb.d
+      - ./data:/data
     networks:
       - dengue_network
 

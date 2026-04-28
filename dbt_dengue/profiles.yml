@@ -1,0 +1,12 @@
+dbt_dengue:
+  outputs:
+    dev:
+      type: postgres
+      host: postgres_dengue
+      user: airflow
+      pass: airflow
+      port: 5432
+      dbname: dengue_db
+      schema: silver
+      threads: 4
+  target: dev

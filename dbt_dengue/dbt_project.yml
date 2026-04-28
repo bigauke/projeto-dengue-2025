@@ -1,0 +1,19 @@
+name: 'dbt_dengue'
+version: '1.0.0'
+config-version: 2
+
+# Esse nome tem que bater exatamente com a "chave" do profiles.yml
+profile: 'dbt_dengue'
+
+# Onde o dbt deve procurar os nossos códigos SQL
+model-paths: ["models"]
+
+# Onde ele vai salvar a documentação gerada depois
+target-path: "target"
+
+# Configuração padrão de como criar as tabelas no banco
+models:
+  dbt_dengue:
+    staging:
+      # Tudo que estiver na pasta staging será criado como tabela física
+      +materialized: table
