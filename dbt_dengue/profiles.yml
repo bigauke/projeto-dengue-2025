@@ -1,8 +1,20 @@
 dbt_dengue:
   outputs:
+    # Este será o alvo para rodar no seu terminal Windows
     dev:
       type: postgres
-      host: postgres_dengue
+      host: localhost  # <-- No Windows usamos localhost
+      user: airflow
+      pass: airflow
+      port: 5432
+      dbname: dengue_db
+      schema: silver
+      threads: 4
+
+    # Este será o alvo que o Airflow usará dentro do Docker
+    prod:
+      type: postgres
+      host: postgres_dengue  # <-- No Docker usamos o nome do serviço
       user: airflow
       pass: airflow
       port: 5432

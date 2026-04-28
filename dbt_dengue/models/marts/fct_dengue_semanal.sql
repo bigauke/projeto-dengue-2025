@@ -2,7 +2,7 @@
 
 SELECT
 -- Agrupamos pela data ( arredondadno para o niívio da semana)
-DATE_TRUNC('week', data_notificacao) AS semana_referenciada,
+DATE_TRUNC('week', data_notificacao) AS semana_referencia,
 uf_notificacao,
 COUNT(*) AS total_casos,
 -- Contagem específica para casos confirmados
