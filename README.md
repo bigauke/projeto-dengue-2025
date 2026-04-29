@@ -29,7 +29,7 @@ graph TD
 ### 🔍 Processamento de Dados (Pipeline dbt)
 Abaixo, a evidência do sucesso da pipeline de transformação, processando mais de 1.6 milhão de registros com sucesso:
 
-![Execução do dbt com sucesso](images/ingestão%20bruta_sinam.png)
+![Execução do dbt com sucesso](images/ingestao_bruta_sinan.png)
 
 * **Bronze (Ingestão):** Dados carregados via script para o PostgreSQL em seu estado bruto.
 * **Silver (Limpeza via dbt):** Tratamento de valores nulos, limpeza de strings e padronização de datas.
